@@ -17,8 +17,8 @@ def is_prime(n: int) -> bool:
     False
     """
     flag = True
-    for i in range(2, math.floor(math.sqrt(n)) + 1):
-        if n % i == 0:
+    for num in range(2, math.floor(math.sqrt(n)) + 1):
+        if n % num == 0:
             flag = False
             break
     return flag
