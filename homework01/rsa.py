@@ -1,9 +1,9 @@
 """Алгоритм позволяет зашифровать и расшифровать сообщение при помощи шифра RSA."""
 
 
+import math
 import random
 import typing as tp
-import math
 
 
 def is_prime(n: int) -> bool:
