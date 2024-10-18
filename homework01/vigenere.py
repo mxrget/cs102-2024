@@ -4,6 +4,10 @@ ALPHA = "abcdefghijklmnopqrstuvwxyz"
 ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
+ALPHA = "abcdefghijklmnopqrstuvwxyz"
+ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
 def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     """
     Encrypts plaintext using a Vigenere cipher.
@@ -17,6 +21,7 @@ def encrypt_vigenere(plaintext: str, keyword: str) -> str:
     ciphertext = ""
     keyword_new = keyword * (len(plaintext) // len(keyword))
     keyword_new += keyword[: (len(plaintext) % len(keyword))]
+
     for i in range(len(plaintext)):
         s = plaintext[i]
         if s in ALPHA:
@@ -41,6 +46,7 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     plaintext = ""
     keyword_new = keyword * (len(ciphertext) // len(keyword))
     keyword_new += keyword[: (len(ciphertext) % len(keyword))]
+
     for i in range(len(ciphertext)):
         s = ciphertext[i]
         if s in ALPHA:
