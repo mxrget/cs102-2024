@@ -25,11 +25,6 @@ def is_prime(n: int) -> bool:
                 flag = False
                 break
 
-    for num in range(2, math.floor(math.sqrt(n)) + 1):
-        if n % num == 0:
-            flag = False
-            break
-
     return flag
 
 
