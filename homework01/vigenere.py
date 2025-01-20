@@ -1,6 +1,5 @@
 """Алгоритм позволяет зашифровать и расшифровать сообщение при помощи шифра Виженера."""
 
-
 ALPHA = "abcdefghijklmnopqrstuvwxyz"
 ALPHA_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 

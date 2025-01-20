@@ -53,7 +53,7 @@ def multiplicative_inverse(e: int, phi: int) -> int:
     23
     """
     # PUT YOUR CODE HERE
-    for i in range(10 ** 7):
+    for i in range(10000000):
         if e * i % phi == 1:
             return i
     return 0
