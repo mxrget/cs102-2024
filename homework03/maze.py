@@ -1,3 +1,4 @@
+import random
 from copy import deepcopy
 from random import choice, randint
 from typing import List, Optional, Tuple, Union
@@ -18,17 +19,18 @@ def remove_wall(grid: List[List[Union[str, int]]], coord: Tuple[int, int]) -> Li
     """
 
     x, y = coord
-    possible = (x >= 2, y < len(grid[0]) - 2)
-    if possible[0] and not possible[1]:
-        grid[x - 1][y] = " "
-    elif not possible[0] and possible[1]:
-        grid[x][y + 1] = " "
-    elif possible[0] and possible[1]:
-        dir = choice(["up", "right"])
-        if dir == "up":
+    dir = choice(["up", "right"])
+    if dir == "up":
+        if x >= 2:
             grid[x - 1][y] = " "
-        else:
+        elif y < len(grid[0]) - 2:
             grid[x][y + 1] = " "
+    else:
+        if y < len(grid[0]) - 2:
+            grid[x][y + 1] = " "
+        elif x > 1:
+            grid[x - 1][y] = " "
+
     return grid
 
 
@@ -52,7 +54,6 @@ def bin_tree_maze(rows: int = 15, cols: int = 15, random_exit: bool = True) -> L
     for cell in empty_cells:
         grid = remove_wall(grid, cell)
 
-    # генерация входа и выхода
     if random_exit:
         x_in, x_out = randint(0, rows - 1), randint(0, rows - 1)
         y_in = randint(0, cols - 1) if x_in in (0, rows - 1) else choice((0, cols - 1))
@@ -218,7 +219,7 @@ def add_path_to_grid(
 
 if __name__ == "__main__":
     print(pd.DataFrame(bin_tree_maze(15, 15)))
-    GRID = bin_tree_maze(15, 15)
+    GRID = bin_tree_maze(5, 5)
     print(pd.DataFrame(GRID))
     _, PATH = solve_maze(GRID)
     MAZE = add_path_to_grid(GRID, PATH)
